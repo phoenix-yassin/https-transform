@@ -1,0 +1,19 @@
+{
+  "name": "yyh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "https.js",
+  "dependencies": {
+    "http-proxy": "^1.14.0",
+    "replacestream": "^4.0.2",
+    "request": "^2.74.0",
+    "response": "^0.18.0",
+    "ssl-root-cas": "^1.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
