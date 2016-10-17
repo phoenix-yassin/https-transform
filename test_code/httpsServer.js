@@ -1,4 +1,4 @@
-
+//https静态本地服务器
 
 var https = require('https'),
     url = require('url'),
@@ -7,6 +7,7 @@ var https = require('https'),
     config = require("./config"),
 //    utils = require("./utils"),
     zlib = require("zlib"),
+    replaceStream = require('replacestream'),
     fs = require('fs');
 
 var hostMap = {};
@@ -31,10 +32,10 @@ https.createServer(options, function(request, response) {
           var contentType = mime[ext] || "text/plain";
           response.setHeader("Content-Type", contentType);
           fs.stat(realPath, function (err, stat) {
-              var lastModified = stat.mtime.toUTCString();
+              /*var lastModified = stat.mtime.toUTCString();
               var ifModifiedSince = "If-Modified-Since".toLowerCase();
               response.setHeader("Last-Modified", lastModified);
-              /*if (ext.match(config.Expires.fileMatch)) {
+              if (ext.match(config.Expires.fileMatch)) {
                   var expires = new Date();
                   expires.setTime(expires.getTime() + config.Expires.maxAge * 1000);
                   response.setHeader("Expires", expires.toUTCString());
@@ -44,9 +45,10 @@ https.createServer(options, function(request, response) {
                   response.writeHead(304, "Not Modified");
                   response.end();
               } else {*/
-                  var raw = fs.createReadStream(realPath);
+                  var rawStatics = fs.createReadStream(realPath);
+                  var raw = fs.readFileSync(realPath,'utf-8');
                   var data = '';
-                  getHostsByRS(raw);
+                  getHostsByRS(rawStatics);
                   var acceptEncoding = request.headers['accept-encoding'] || "";
                   var matched = ext.match(config.Compress.match);
 
@@ -58,55 +60,50 @@ https.createServer(options, function(request, response) {
                       raw.pipe(zlib.createDeflate()).pipe(response);
                   } else {}*/
                       response.writeHead(200, "Ok");
-                      //console.log(raw);
-                      raw.pipe(response);
+                      //TODO: replcer
+                      response.write(raw, "utf-8");
+                      response.end(function() {
+                        console.log('raw data ends');
+                      });
 
+
+                      /*response.write(raw, function() {
+                        console.log('raw data:' + raw.toString());
+                      });*/
+                      //raw.pipe(response);
               //}
           });
       }
   });
 }).listen(443);
 
-
-/*var reg = /\/\/([a-zA-Z0-9][-a-zA-Z0-9]{1,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\.?)\//;//匹配主页中其他请求的server
-cres.on('data', function(chunk){
-        var temp = chunk.toString();
-        var hosts = temp.match(reg);
-        var hosts_num = hosts? hosts.length -1 : 0;
-        if( hosts_num ){
-          if(hostMap[hosts[1]]){
-            hostMap[hosts[1]] += 1;
-          }else{
-            hostMap[hosts[1]] = 1;
-          }
-        }
-      });
-      cres.on('end', function(){
-        console.log('hosts are:' + JSON.stringify(hostMap));
-      });*/
 //统计host数量以及出现次数
 function getHostsByRS(raw) {
+  var writableStream = fs.createWriteStream('indexhosts.txt');
   var reg = /\/\/([a-zA-Z0-9][-a-zA-Z0-9]{1,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\.?)\//gi;
-    var data = '';
-    raw.on("data",function(chunk) {
-         data += chunk;
+  var data = '';
+  raw.on("data",function(chunk) {
+       data += chunk;
+  });
+  raw.on("end",function() {
+    var temp = data.toString();
+    var hosts = temp.match(reg);
+    hosts = hosts.join().replace(/\//g, '').split(',');
+    var hosts_num = hosts? hosts.length: 0;
+    for(var i = 0; i < hosts.length; i++ ){
+     if( hosts_num ){
+       if(hostMap[hosts[i]]){
+         hostMap[hosts[i]] += 1;
+       }else{
+         hostMap[hosts[i]] = 1;
+       }
+     }
+    }
+    // console.log(JSON.stringify(hostMap));
+    writableStream.write(JSON.stringify(hostMap));
+    writableStream.on('end', function(err){
+      console.log('all is written !');
     });
-    raw.on("end",function() {
-         var temp = data.toString();
-         var hosts = temp.match(reg);
-         hosts = hosts.join().replace(/\//g, '').split(',');
-         var hosts_num = hosts? hosts.length -1 : 0;
-         for(var i = 0; i < hosts.length; i++ ){
-           if( hosts_num ){
-             if(hostMap[hosts[i]]){
-               hostMap[hosts[i]] += 1;
-             }else{
-               hostMap[hosts[i]] = 1;
-             }
-           }
-         }
-
-         console.log(JSON.stringify(hostMap));
-    });
+  });
 }
 

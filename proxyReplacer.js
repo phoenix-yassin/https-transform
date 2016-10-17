@@ -1,3 +1,4 @@
+//实现http代理的gzip资源解压缩,修改内容
 var http = require('http'),
   replaceStream = require('replacestream'),
   request = require('request'),
