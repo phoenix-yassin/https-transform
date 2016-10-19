@@ -8,6 +8,8 @@ var https = require('https'),
 //    utils = require("./utils"),
     zlib = require("zlib"),
     replaceStream = require('replacestream'),
+    dnsTransform = require('./dnsTransform'),
+
     fs = require('fs');
 
 var hostMap = {};
@@ -60,10 +62,13 @@ https.createServer(options, function(request, response) {
                       raw.pipe(zlib.createDeflate()).pipe(response);
                   } else {}*/
                       response.writeHead(200, "Ok");
-                      //TODO: replcer
+                      /** replcer start  **/
+                      raw = raw.replace(/http:\/\//gi,'https:\/\/');
+                      raw = dnsTransform(raw);
+                      /** replcer end  **/
                       response.write(raw, "utf-8");
                       response.end(function() {
-                        console.log('raw data ends');
+                        //console.log(raw);
                       });
 
 
