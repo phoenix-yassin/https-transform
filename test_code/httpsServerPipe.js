@@ -1,19 +1,17 @@
 var https = require('https'),
-    http = require('http')  
+    http = require('http')
     url = require('url'),
-    mime = require("./mime").types, 
+    mime = require("./mime").types,
     path = require("path"),
     config = require("./config"),
 //    utils = require("./utils"),
     zlib = require("zlib"),
-    fs = require('fs');  
-  
-var options = {  
+    fs = require('fs');
 
-    key:  fs.readFileSync('./ca/server.key'),  //带路径的文件名，注意两个文件不要写反了  
-    cert:fs.readFileSync('./ca/server.crt')  
-};  
-  
+var options = {
+    key:  fs.readFileSync('./ca/server.key'),  //带路径的文件名，注意两个文件不要写反了
+    cert:fs.readFileSync('./ca/server.crt')
+};
 
 var server = https.createServer(options, function (req, res) {
   var urlObj =  url.parse(req.url);
@@ -28,15 +26,11 @@ var server = https.createServer(options, function (req, res) {
     cRes.on('end', function () {
         body = Buffer.concat(body);
         if (cRes.headers['content-encoding'] === 'gzip') {
-
           res.send(body);
-
             zlib.gunzip(body, function (err, data) {
-                
                 console.log(body.toString());
             });
         } else {
-            
             console.log(body.toString());
         }
     });
@@ -57,7 +51,6 @@ var server = https.createServer(options, function (req, res) {
             console.log(data.toString());
         }
     });*/
-
 });
 
 server.listen(443, '127.0.0.1');
