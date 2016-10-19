@@ -19,7 +19,7 @@ var server = https.createServer(options, function (req, res) {
   var urlObj =  url.parse(req.url);
   var newUrl = 'http://ue.17173cdn.com' +/* urlObj.host +*/ urlObj.path;
   console.log(JSON.stringify(urlObj));
-  console.log(req.headers.host);
+  console.log(newUrl);
   var cReq = http.request(newUrl, function (cRes) {
     var body = [];
     cRes.on('data', function (chunk) {
