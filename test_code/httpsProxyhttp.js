@@ -1,11 +1,13 @@
 var https = require('https'),
-    http = require('http')
+    http = require('http'),
     url = require('url'),
     mime = require("./mime").types,
     path = require("path"),
     config = require("./config"),
 //    utils = require("./utils"),
     zlib = require("zlib"),
+    request = require('request'),
+    replaceStream = require('replacestream'),
     fs = require('fs');
 
 var options = {
@@ -17,14 +19,17 @@ var server = https.createServer(options, function (req, res) {
   var urlObj =  url.parse(req.url);
   var newUrl = 'http://ue.17173cdn.com' +/* urlObj.host +*/ urlObj.path;
   console.log(JSON.stringify(urlObj));
-  console.log(req.headers.host);
-  var cReq = http.request(newUrl, function (cRes) {
+  console.log(newUrl);
+
+  /*var cReq = http.request(newUrl, function (cRes) {
     var body = [];
     cRes.on('data', function (chunk) {
         body.push(chunk);
+        console.log("chunk: " + chunk.toString());
     });
     cRes.on('end', function () {
         body = Buffer.concat(body);
+        console.log('end!');
         if (cRes.headers['content-encoding'] === 'gzip') {
           res.send(body);
             zlib.gunzip(body, function (err, data) {
@@ -34,23 +39,24 @@ var server = https.createServer(options, function (req, res) {
             console.log(body.toString());
         }
     });
-
   });
-  cReq.end();
-    /*var body = [];
-    response.on('data', function (chunk) {
-        body.push(chunk);
-    });
-    response.on('end', function () {
-        body = Buffer.concat(body);
-        if (response.headers['content-encoding'] === 'gzip') {
-            zlib.gunzip(body, function (err, data) {
-                console.log(data.toString());
-            });
-        } else {
-            console.log(data.toString());
-        }
-    });*/
+  cReq.end();*/
+
+    var oldRes = request(newUrl, function(error, response, body) {
+    //console.log('the decoded data is: ' + response.pipe(gunzipStream).toString());
+    //body.pipe(gunzipStream).pipe();
+  });
+
+  req.pipe(oldRes);
+  oldRes.pipe(zlib.createGunzip())
+    .pipe(replaceStream(/function/g, 'yyh'))
+    /*.pipe(response({ compress: req }))*/
+    .pipe(res);
+
 });
 
 server.listen(443, '127.0.0.1');
+//server;
+server.on('error', function(e) {
+  console.log(e);
+});
