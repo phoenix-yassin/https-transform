@@ -59,7 +59,7 @@ var server = https.createServer(options, function (req, res) {
     if(retType === 'js' || retType === 'css' || retType === 'html'){
       req.pipe(oldRes);
       oldRes.pipe(zlib.createGunzip())
-        .pipe(replaceStream(/function/g, 'yyh'))
+        .pipe(replaceStream(/http:\/\//g, 'https://'))
         /*.pipe(response({ compress: req }))*/
         .pipe(res);
       }else{
@@ -79,7 +79,7 @@ var server = https.createServer(options, function (req, res) {
 
 });
 
-server.listen(443, '127.0.0.1');
+server.listen(443, '0.0.0.0');
 //server;
 server.on('error', function(e) {
   console.log(e);
