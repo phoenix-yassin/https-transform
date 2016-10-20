@@ -29,7 +29,8 @@ var server = https.createServer(options, function (req, res) {
   var acceptEncoding = req.headers['accept-encoding'] || "";
   var accept = req.headers['accept'] || "";
   var retType = getReqFileType(req.url);
-  //var matched = ext.match(config.Compress.match);
+  console.log('type:'+ retType ); 
+ //var matched = ext.match(config.Compress.match);
   /*var cReq = http.request(newUrl, function (cRes) {
     var body = [];
     cRes.on('data', function (chunk) {
@@ -64,7 +65,7 @@ var server = https.createServer(options, function (req, res) {
         .pipe(res);
       }else{
         req.pipe(oldRes);
-        oldRes.pipe(zlib.createGzip()).pipe(res);
+        oldRes.pipe(zlib.createGunzip()).pipe(res);
       }
   } else if (acceptEncoding.match(/\bdeflate\b/)) {
     req.pipe(oldRes);

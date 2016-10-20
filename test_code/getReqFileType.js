@@ -2,7 +2,7 @@ var path = require('path');
 var url = require('url');
 
 function getReqFileType(reqUrl){
-  var retType = null;
+  var resType = null;
   var urlObj = url.parse(reqUrl);
   var ext = path.extname(urlObj.path);
   var queryStr = urlObj.query;
