@@ -1,0 +1,25 @@
+Types of mixed content
+There are two categories for mixed content: mixed passive/display content and mixed active content. The difference lies in the threat level of the worst case scenario if content is rewritten as part of a man-in-the-middle attack. In the case of passive content, the threat is low (webpage appears broken or with misleading content). In the case of active content, the threat can lead to phishing, sensitive data disclosure, redirection to malicious sites, etc.
+Stylesheets are considered active content, so content normally considered passive referenced from a stylesheet is considered mixed passive/display content.
+Mixed passive/display content
+Mixed passive/display content is content served over HTTP that is included in an HTTPS webpage, but that cannot alter other portions of the webpage. For example, an attacker could replace an image served over HTTP with an inappropriate image or message to the user. The attacker could also infer information about the user's activities by watching which images are served to the user; often images are only served on a specific page within a website. If the attacker observes HTTP requests to certain images, they could determine which webpage the user is visiting.
+Passive content list
+This section lists all types of HTTP requests which are considered passive content:
+?	<img> (src attribute)
+?	<audio> (src attribute)
+?	<video> (src attribute)
+?	<object> subresources (when an <object> performs HTTP requests)
+Mixed active content
+Mixed active content is content that has access to all or parts of the Document Object Model of the HTTPS page. This type of mixed content can alter the behavior of the HTTPS page and potentially steal sensitive data from the user. Hence, in addition to the risks described for mixed display content above, mixed active content is vulnerable to a few other attack vectors.
+In the mixed active content case, a man-in-the-middle attacker can intercept the request for the HTTP content. The attacker can also rewrite the response to include malicious JavaScript code. Malicious active content can steal the user's credentials, acquire sensitive data about the user, or attempt to install malware on the user's system (by leveraging vulnerabilities in the browser or its plugins, for example).
+The risk involved with mixed content does depend on the type of website the user is visiting and how sensitive the data exposed to that site may be. The webpage may have public data visible to the world or private data visible only when authenticated. If the webpage is public and has no sensitive data about the user, using mixed active content still provides the attacker with the opportunity to redirect the user to other HTTP pages and steal HTTP cookies from those sites.
+Active content examples
+This section lists some types of HTTP requests which are considered active content:
+?	<script> (src attribute)
+?	<link> (href attribute) (this includes CSS stylesheets)
+?	<iframe> (src attribute)
+?	XMLHttpRequest requests
+?	All cases in CSS where a url value is used (@font-face, cursor, background-image, and so forth).
+?	<object> (data attribute)
+Other resource types like web fonts and workers may be considered active mixed content, as they are in Chromium.
+
