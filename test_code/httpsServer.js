@@ -5,11 +5,8 @@ var https = require('https'),
     mime = require("./mime").types,
     path = require("path"),
     config = require("./config"),
-//    utils = require("./utils"),
-    zlib = require("zlib"),
     replaceStream = require('replacestream'),
     dnsTransform = require('./dnsTransform'),
-
     fs = require('fs');
 
 var hostMap = {};

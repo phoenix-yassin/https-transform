@@ -1,20 +1,20 @@
 exports.types = {
-
+/*types had possible requests, must be tranformed */
   "css": "text/css",
+  "html": "text/html",
+  "js": "text/javascript",
+  "json": "application/json",
+
+  "txt": "text/plain",//TODO to be or not to be
+
 
   "gif": "image/gif",
-
-  "html": "text/html",
 
   "ico": "image/x-icon",
 
   "jpeg": "image/jpeg",
 
   "jpg": "image/jpeg",
-
-  "js": "text/javascript",
-
-  "json": "application/json",
 
   "pdf": "application/pdf",
 
@@ -25,8 +25,6 @@ exports.types = {
   "swf": "application/x-shockwave-flash",
 
   "tiff": "image/tiff",
-
-  "txt": "text/plain",
 
   "wav": "audio/x-wav",
 
