@@ -18,6 +18,10 @@ var options = {
 
 var server = https.createServer(options, function (req, res) {
 //req.headers.host
+  if(/\/favicon.ico/gi.test(req.url)){
+    console.log('=======omit icon=======');
+    return;
+  }
   var urlObj =  url.parse(req.url);
   var newUrl = 'http://ue.17173cdn.com' +/* urlObj.host +*/ urlObj.path;
   console.log(JSON.stringify(urlObj));
@@ -29,7 +33,7 @@ var server = https.createServer(options, function (req, res) {
   var acceptEncoding = req.headers['accept-encoding'] || "";
   var accept = req.headers['accept'] || "";
   var retType = getReqFileType(req.url);
-  console.log('type:'+ retType ); 
+  console.log('type:'+ retType );
  //var matched = ext.match(config.Compress.match);
   /*var cReq = http.request(newUrl, function (cRes) {
     var body = [];
