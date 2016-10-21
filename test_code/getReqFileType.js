@@ -4,7 +4,8 @@ var url = require('url');
 function getReqFileType(reqUrl){
   var resType = null;
   var urlObj = url.parse(reqUrl);
-  var ext = path.extname(urlObj.path);
+  var ext = path.extname(urlObj.pathname);
+  //console.log(reqUrl + '==>' + ext);
   var queryStr = urlObj.query;
   ext = ext ? ext.slice(1) : 'unknown';
   if(/^js$/gi.test(ext)){
@@ -18,6 +19,7 @@ function getReqFileType(reqUrl){
   }else{
 
   }
+  //console.log(resType);
   return resType;
 }
 
