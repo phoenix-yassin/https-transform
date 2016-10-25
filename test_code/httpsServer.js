@@ -12,8 +12,8 @@ var https = require('https'),
 var hostMap = {};
 
 var options = {
-    key:  fs.readFileSync('./ca/server.key'),  //带路径的文件名，注意两个文件不要写反了
-    cert:fs.readFileSync('./ca/server.crt')
+    key:  fs.readFileSync('./demoCA/server.key'),  //带路径的文件名，注意两个文件不要写反了
+    cert:fs.readFileSync('./demoCA/server.crt')
 };
 
 https.createServer(options, function(request, response) {

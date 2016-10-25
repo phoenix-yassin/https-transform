@@ -8,12 +8,13 @@ var https = require('https'),
   request = require('request'),
   replaceStream = require('replacestream'),
   path = require('path'),
+  concat = require('concat-stream'),
   getReqFileType = require('./getReqFileType'),
   fs = require('fs');
 
 var options = {
-  key:  fs.readFileSync('./demoCA/server.key'),  //带路径的文件名，注意两个文件不要写反了
-  cert:fs.readFileSync('./demoCA/server.crt')
+  key:  fs.readFileSync('./ca/server.key'),  //带路径的文件名，注意两个文件不要写反了
+  cert:fs.readFileSync('./ca/server.crt')
 };
 
 var server = https.createServer(options, function (req, res) {
@@ -34,38 +35,13 @@ var server = https.createServer(options, function (req, res) {
   var accept = req.headers['accept'] || "";
   var retType = getReqFileType(req.url);
   console.log('type:'+ retType );
- //var matched = ext.match(config.Compress.match);
-  /*var cReq = http.request(newUrl, function (cRes) {
-    var body = [];
-    cRes.on('data', function (chunk) {
-      body.push(chunk);
-      console.log("chunk: " + chunk.toString());
-    });
-    cRes.on('end', function () {
-      body = Buffer.concat(body);
-      console.log('end!');
-      if (cRes.headers['content-encoding'] === 'gzip') {
-        res.send(body);
-          zlib.gunzip(body, function (err, data) {
-            console.log(body.toString());
-          });
-      } else {
-        console.log(body.toString());
-      }
-    });
-  });
-  cReq.end();*/
-
-    var oldRes = request(newUrl, function(error, response, body) {
-    //console.log('the decoded data is: ' + response.pipe(gunzipStream).toString());
-    //body.pipe(gunzipStream).pipe();
+  var oldRes = request(newUrl, function(error, response, body) {
   });
   if (acceptEncoding.match(/\bgzip\b/)) {
     if(retType === 'js' || retType === 'css' || retType === 'html'){
       req.pipe(oldRes);
       oldRes.pipe(zlib.createGunzip())
         .pipe(replaceStream(/http:\/\//g, 'https://'))
-        /*.pipe(response({ compress: req }))*/
         .pipe(res);
       }else{
         req.pipe(oldRes);
@@ -80,8 +56,8 @@ var server = https.createServer(options, function (req, res) {
   }
 });
 
-server.listen(443, '0.0.0.0');
 //server;
+server.listen(443, '0.0.0.0');
 server.on('error', function(e) {
   console.log(e);
 });
