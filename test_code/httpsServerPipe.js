@@ -54,22 +54,31 @@ var server = https.createServer(options, function (req, res) {
       }
     });
   });
-  cReq.end();*/
+  cq.end();*/
 
     var oldRes = request(newUrl, function(error, response, body) {
     //console.log('the decoded data is: ' + response.pipe(gunzipStream).toString());
     //body.pipe(gunzipStream).pipe();
+    console.log('origin response header0:' + JSON.stringify(response.headers) );
   });
+    var decompressed;
   if (acceptEncoding.match(/\bgzip\b/)) {
     if(retType === 'js' || retType === 'css' || retType === 'html'){
-      req.pipe(oldRes);
-      oldRes.pipe(zlib.createGunzip())
-        .pipe(replaceStream(/http:\/\//g, 'https://'))
+   console.log('origin response header:' + JSON.stringify(oldRes.headers) );  
+    //req.pipe(oldRes);
+    // oldRes.setHeader('content-type','application/javascript;charset=utf-8');
+    console.log('response header:' + JSON.stringify(oldRes.headers) );
+    decompressed =  oldRes.pipe(zlib.createGunzip());
+    decompressed.on('error', function(e){
+	console.log('gzib error:' + e);
+})
+    decompressed.pipe(replaceStream(/http:\/\//g, 'https://'))
+   // oldRes.pipe(replaceStream(/http:\/\//g, 'https://'))
         /*.pipe(response({ compress: req }))*/
         .pipe(res);
       }else{
         req.pipe(oldRes);
-        oldRes.pipe(zlib.createGunzip()).pipe(res);
+        oldRes.pipe(res);
       }
   } else if (acceptEncoding.match(/\bdeflate\b/)) {
     req.pipe(oldRes);
@@ -78,6 +87,7 @@ var server = https.createServer(options, function (req, res) {
     req.pipe(oldRes);
     oldRes.pipe(res);
   }
+
 });
 
 server.listen(443, '0.0.0.0');
