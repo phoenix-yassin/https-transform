@@ -31,7 +31,6 @@ var server = https.createServer(options, function (req, res) {
   ext = ext ? ext.slice(1) : 'unknown';
   var contentType = mime[ext] || "text/plain";
   var acceptEncoding = req.headers['accept-encoding'] || "";
-  var accept = req.headers['accept'] || "";
   var retType = getReqFileType(req.url);
   console.log('type:'+ retType );
  //var matched = ext.match(config.Compress.match);
@@ -63,6 +62,9 @@ var server = https.createServer(options, function (req, res) {
   if (acceptEncoding.match(/\bgzip\b/)) {
     if(retType === 'js' || retType === 'css' || retType === 'html'){
       req.pipe(oldRes);
+      if(retType === 'css'){
+
+      }
       oldRes.pipe(zlib.createGunzip())
         .pipe(replaceStream(/http:\/\//g, 'https://'))
         /*.pipe(response({ compress: req }))*/
