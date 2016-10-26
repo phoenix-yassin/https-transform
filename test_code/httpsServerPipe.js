@@ -37,56 +37,57 @@ var server = https.createServer(options, function (req, res) {
   console.log('type:'+ retType );
 
 
-  var oldReq = request(newUrl);
-  oldReq.on('reponse', function(oldRes) {
-    if (oldRes.statusCode !== 200) throw new Error('Status not 200');
-    responseEncoding = oldRes.headers['content-encoding'] || '';
-    if (responseEncoding.match(/\bgzip\b/)) {
-      if(retType === 'js' || retType === 'css' || retType === 'html'){
-        console.log('origin response header:' + JSON.stringify(oldRes.headers) );
-        //req.pipe(oldRes);
-        // oldRes.setHeader('content-type','application/javascript;charset=utf-8');
-        console.log('response header:' + JSON.stringify(oldRes.headers) );
-        decompressed =  oldRes.pipe(zlib.createGunzip());
-        decompressed.on('error', function(e){
-          console.log('gzib error:' + e);
-        })
-        decompressed.pipe(replaceStream(/http:\/\//g, 'https://'))
-       // oldRes.pipe(replaceStream(/http:\/\//g, 'https://'))
-            /*.pipe(response({ compress: req }))*/
-            .pipe(res);
-      }else{
-        req.pipe(oldRes);
-        oldRes.pipe(res);
-      }
-    } else if (responseEncoding.match(/\bdeflate\b/)) {
-      req.pipe(oldRes);
-      oldRes.pipe(zlib.createDeflate()).pipe(res);
-    } else {
-      req.pipe(oldRes);
-      oldRes.pipe(res);
-    }
-
-  });
+  // var oldReq = request(newUrl);
+  // oldReq.on('response', function(oldRes) {
+  //   if (oldRes.statusCode !== 200) throw new Error('Status not 200');
+  //   responseEncoding = oldRes.headers['content-encoding'] || '';
+  //   if (responseEncoding.match(/\bgzip\b/)) {
+  //     if(retType === 'js' || retType === 'css' || retType === 'html'){
+  //       console.log('origin response header:' + JSON.stringify(oldRes.headers) );
+  //       //req.pipe(oldRes);
+  //       console.log('response header:' + JSON.stringify(oldRes.headers) );
+  //       decompressed =  oldRes.pipe(zlib.createGunzip());
+  //       decompressed.on('error', function(e){
+  //         console.log('gzib error:' + e);
+  //       })
+  //       decompressed.pipe(replaceStream(/http:\/\//g, 'https://'))
+  //      // oldRes.pipe(replaceStream(/http:\/\//g, 'https://'))
+  //           /*.pipe(response({ compress: req }))*/
+  //           .pipe(res);
+  //     }else{
+  //       req.pipe(oldRes);
+  //       oldRes.pipe(res);
+  //     }
+  //   } else if (responseEncoding.match(/\bdeflate\b/)) {
+  //     req.pipe(oldRes);
+  //     oldRes.pipe(zlib.createDeflate()).pipe(res);
+  //   } else {
+  //     req.pipe(oldRes);
+  //     oldRes.pipe(res);
+  //   }
+  // });
 
 
-/*  var oldRes = request(newUrl, function(error, response, body) {
+  var oldRes = request(newUrl, function(error, response, body) {
     console.log('origin response header0:' + JSON.stringify(response.headers) );
   });
   if (acceptEncoding.match(/\bgzip\b/)) {
     if(retType === 'js' || retType === 'css' || retType === 'html'){
-      console.log('origin response header:' + JSON.stringify(oldRes.headers) );
-      //req.pipe(oldRes);
-      // oldRes.setHeader('content-type','application/javascript;charset=utf-8');
-      console.log('response header:' + JSON.stringify(oldRes.headers) );
-      decompressed =  oldRes.pipe(zlib.createGunzip());
-      decompressed.on('error', function(e){
-        console.log('gzib error:' + e);
-      })
-      decompressed.pipe(replaceStream(/http:\/\//g, 'https://'))
-     // oldRes.pipe(replaceStream(/http:\/\//g, 'https://'))
-          //.pipe(response({ compress: req }))
+      if( req.url.indexOf('ping.js') > -1){//special
+        req.pipe(oldRes);
+        oldRes.pipe(replaceStream(/http:\/\//g, 'https://'))
+        .pipe(res);
+      }else{
+        console.log('origin response header:' + JSON.stringify(oldRes.headers) );
+        //req.pipe(oldRes);
+        decompressed =  oldRes.pipe(zlib.createGunzip());
+        decompressed.pipe(replaceStream(/http:\/\//g, 'https://'))
+        //oldRes.pipe(replaceStream(/http:\/\//g, 'https://'))
           .pipe(res);
+        decompressed.on('error', function(e){
+         console.log('gzib error:' + e);
+        });
+      }
     }else{
       req.pipe(oldRes);
       oldRes.pipe(res);
@@ -97,7 +98,7 @@ var server = https.createServer(options, function (req, res) {
   } else {
     req.pipe(oldRes);
     oldRes.pipe(res);
-  }*/
+  }
 
 });
 
