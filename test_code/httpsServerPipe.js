@@ -79,11 +79,11 @@ var server = https.createServer(options, function (req, res) {
         || req.url.indexOf('ad17173tequan/v2-1/production.js') > -1 || req.url.indexOf('ad17173wenzituijian/v1-0/production.js') > -1 || req.url.indexOf('ad17173banner/v1-0/production.js') > -1 || req.url.indexOf('ad17173ceshizhitong/v1-1/production.js') > -1 || req.url.indexOf('ad17173zhuanquyeyouremm/v1-2/production.js') > -1 || req.url.indexOf('ad17173duilian/v1-1/production.js') > -1 || req.url.indexOf('ad17173script/v1-0/production.js') > -1
 	){//special
        req.pipe(oldRes);
-//|| req.url.indexOf('ad17173banner2/v1-0/production.js') > -1    
+//|| req.url.indexOf('ad17173banner2/v1-0/production.js') > -1
 //res.setHeader('vary','Accept-Encoding');
 //oldRes.setHeader('content-type', 'application/javascript;charser=utf-8');
 //res.setHeader('vary','Accept-Encoding');
-//res.setHeader('content-type', 'application/javascript;charset=utf-8');        
+//res.setHeader('content-type', 'application/javascript;charset=utf-8');
         oldRes.pipe(replaceStream(/http:\/\//g, 'https://'))
         .pipe(res);
       }else{
