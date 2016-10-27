@@ -1,4 +1,16 @@
-#
+#https://itigloo.com/
+#security/generate-an-openssl-certificate-request-with-sha-256-signature/
+
+#openssl genrsa -out server.key 2048
+
+#openssl req -new -sha256 -out server.csr -key server.key -config openssl.cnf
+
+#openssl req -text -noout -in server.csr  (only used for check our work)
+
+#openssl x509 -req -days 3650 -in server.csr -signkey server.key
+# -out server.crt -extensions v3_req -extfile openssl.cnf
+
+
 # OpenSSL example configuration file.
 # This is mostly being used for generation of certificate requests.
 #
@@ -252,6 +264,7 @@ subjectAltName = @alt_names
 [alt_names]
 DNS.1 = www.17173.com
 DNS.2 = ue.17173cdn.com
+DNS.3 = s.17173cdn.com
 IP.1 = 10.5.15.45
 #####
 
