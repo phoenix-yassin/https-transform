@@ -23,8 +23,9 @@ var server = https.createServer(options, function (req, res) {
     return;
   }
   var urlObj =  url.parse(req.url);
-  var newUrl = 'http://ue.17173cdn.com' +/* urlObj.host +*/ urlObj.path;
-  console.log(JSON.stringify(urlObj));
+  var newUrl = 'http://' + req.headers.host  +/* urlObj.host +*/ urlObj.path;
+//'http://ue.17173cdn.com' +/* urlObj.host +*/ urlObj.path;
+//  console.log(JSON.stringify(urlObj));
   console.log(req.headers.host + '<==>' + newUrl);
 
   var ext = path.extname(urlObj.path),
@@ -68,18 +69,26 @@ var server = https.createServer(options, function (req, res) {
   // });
 
 
-  var oldRes = request(newUrl, function(error, response, body) {
-    console.log('origin response header0:' + JSON.stringify(response.headers) );
+  var oldRes = request(newUrl, function(response) {
+   // console.log('origin response header0:' + JSON.stringify(response.headers) );
   });
   if (acceptEncoding.match(/\bgzip\b/)) {
+    console.log('***gzip****');
     if(retType === 'js' || retType === 'css' || retType === 'html'){
-      if( req.url.indexOf('ping.js') > -1){//special
-        //req.pipe(oldRes);
+      if( req.url.indexOf('ping.js') > -1   || req.url.indexOf('adm2.js') > -1
+        || req.url.indexOf('ad17173tequan/v2-1/production.js') > -1 || req.url.indexOf('ad17173wenzituijian/v1-0/production.js') > -1 || req.url.indexOf('ad17173banner/v1-0/production.js') > -1 || req.url.indexOf('ad17173ceshizhitong/v1-1/production.js') > -1 || req.url.indexOf('ad17173zhuanquyeyouremm/v1-2/production.js') > -1 || req.url.indexOf('ad17173duilian/v1-1/production.js') > -1 || req.url.indexOf('ad17173script/v1-0/production.js') > -1
+	){//special
+       req.pipe(oldRes);
+//|| req.url.indexOf('ad17173banner2/v1-0/production.js') > -1
+//res.setHeader('vary','Accept-Encoding');
+//oldRes.setHeader('content-type', 'application/javascript;charser=utf-8');
+//res.setHeader('vary','Accept-Encoding');
+//res.setHeader('content-type', 'application/javascript;charset=utf-8');
         oldRes.pipe(replaceStream(/http:\/\//g, 'https://'))
         .pipe(res);
       }else{
-        console.log('origin response header:' + JSON.stringify(oldRes.headers) );
-        //req.pipe(oldRes);
+        console.log('origin response header(stream):' + JSON.stringify(oldRes.headers) );
+        req.pipe(oldRes);
         decompressed =  oldRes.pipe(zlib.createGunzip());
         decompressed.pipe(replaceStream(/http:\/\//g, 'https://'))
         //oldRes.pipe(replaceStream(/http:\/\//g, 'https://'))
