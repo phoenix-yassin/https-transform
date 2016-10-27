@@ -74,7 +74,7 @@ var server = https.createServer(options, function (req, res) {
   if (acceptEncoding.match(/\bgzip\b/)) {
     if(retType === 'js' || retType === 'css' || retType === 'html'){
       if( req.url.indexOf('ping.js') > -1){//special
-        req.pipe(oldRes);
+        //req.pipe(oldRes);
         oldRes.pipe(replaceStream(/http:\/\//g, 'https://'))
         .pipe(res);
       }else{

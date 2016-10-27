@@ -34,6 +34,17 @@ var server = https.createServer(options, function (req, res) {
   var acceptEncoding = req.headers['accept-encoding'] || "";
   var accept = req.headers['accept'] || "";
   var retType = getReqFileType(req.url);
+
+  var concatStream = concat(gotFile);
+  function gotPicture(fileBuffer) {
+    // fileBuffer is all of `cat.png` as a node.js Buffer
+    var fileStr = fileBuffer.toString();
+    fileStr = fileStr.replace(/function/gi, 'yyh_function');
+    fileStr = fileStr.replace(/var/gi, 'yyh_var');
+    return new Buffer(fileStr);
+
+  }
+
   console.log('type:'+ retType );
   var oldRes = request(newUrl, function(error, response, body) {
   });
