@@ -23,9 +23,9 @@ var server = https.createServer(options, function (req, res) {
     return;
   }
   var urlObj =  url.parse(req.url);
-  var newUrl = 'http://' + req.headers.host  +/* urlObj.host +*/ urlObj.path;
-//'http://ue.17173cdn.com' +/* urlObj.host +*/ urlObj.path;
-//  console.log(JSON.stringify(urlObj));
+  var newUrl = 'http://' + req.headers.host  + urlObj.path;
+//'http://ue.17173cdn.com' + urlObj.path;
+  console.log(JSON.stringify(urlObj));
   console.log(req.headers.host + '<==>' + newUrl);
 
   var ext = path.extname(urlObj.path),
