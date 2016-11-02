@@ -1,7 +1,4 @@
 //https静态本地服务器
-
-openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt -extensions v3_req -extfile openssl.cnf
-
 var https = require('https'),
     url = require('url'),
     mime = require("./mime").types,
