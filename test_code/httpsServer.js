@@ -60,6 +60,7 @@ https.createServer(options, function(request, response) {
                       response.writeHead(200, "Ok");
                       /** replcer start  **/
                       raw = raw.replace(/http:\/\//gi,'https:\/\/');
+                      //annotate dns transformer
                       raw = dnsTransform(raw);
                       /** replcer end  **/
                       response.write(raw, "utf-8");
