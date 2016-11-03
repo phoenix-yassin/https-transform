@@ -76,7 +76,10 @@ var server = https.createServer(options, function (req, res) {
     console.log('***gzip****');
     if(retType === 'js' || retType === 'css' || retType === 'html'){
       if( req.url.indexOf('ping.js') > -1   || req.url.indexOf('adm2.js') > -1
-        || req.url.indexOf('ad17173tequan/v2-1/production.js') > -1 || req.url.indexOf('ad17173wenzituijian/v1-0/production.js') > -1 || req.url.indexOf('ad17173banner/v1-0/production.js') > -1 || req.url.indexOf('ad17173ceshizhitong/v1-1/production.js') > -1 || req.url.indexOf('ad17173zhuanquyeyouremm/v1-2/production.js') > -1 || req.url.indexOf('ad17173duilian/v1-1/production.js') > -1 || req.url.indexOf('ad17173script/v1-0/production.js') > -1
+        || req.url.indexOf('ad17173tequan/v2-1/production.js') > -1 || req.url.indexOf('ad17173wenzituijian/v1-0/production.js') > -1
+        || req.url.indexOf('ad17173banner/v1-0/production.js') > -1 || req.url.indexOf('ad17173ceshizhitong/v1-1/production.js') > -1
+        || req.url.indexOf('ad17173zhuanquyeyouremm/v1-2/production.js') > -1 || req.url.indexOf('ad17173duilian/v1-1/production.js') > -1
+        || req.url.indexOf('ad17173script/v1-0/production.js') > -1 || req.url.indexOf('ad17173yeyoukaifutext/v1-0/production.js') > -1
 	){//special
        req.pipe(oldRes);
 //|| req.url.indexOf('ad17173banner2/v1-0/production.js') > -1
