@@ -23,9 +23,36 @@ https://ue.17173cdn.com/a/lib/vda/sources/ad17173tequan/v2-1/production.js?001
 https://ue.17173cdn.com/a/lib/vda/sources/ad17173script/v1-0/production.js?001
 
 
-/***20161112***/
+/***20161102***/
 https://s.17173cdn.com/2016/www/if/video/aoqi/201609/01-157/okidea_sc1.js
 
 https://zt2.a.he2d.com/jp1f26/1009?callback=advrhbrqbqrjl70dizr62mtdl0f6o
 
 https://ad.elr.okjoys.com/count?play_all_ad_id=38436&time=15000
+
+/***20161103***/
+https://s.17173cdn.com/2016/www/if/video/adsame/2016/09/thyj2_160914_zj1/3638.js
+
+https://s.17173cdn.com/2016/www/if/video/aoqi/201609/14-155/okidea_sc2.js
+
+https://p1.v.17173cdn.com/tfrquk/YWxqaGBf/vlog/20161103/091620/458f7bba-bd98-4aa1-bc78-2a24fe5ffa36.jpg
+
+https://s3.17173cdn.com/www.17173.com/10052zjd/mu-1005-250400-2zjd.swf
+https://s2.17173cdn.com/www.17173.com/10052zjd/mu-1005-830120-2zjd.swf
+https://s2.17173cdn.com/www.17173.com/1102sy1zj/pd-1102-250440-sy1zj.jpg
+https://s1.17173cdn.com/www.17173.com/1102sy1zj/pd-1102-850120-sy1zj.jpg
+
+有些类似的没有列出来,比如 https://s.17173cdn.com/ 下的js. 为了测试,我还是给他们自签了证书, 以检测js里面的可能链接
+
+
+
+1. https://s*.17173cdn.com/ 证书错误(使用SHA1).对应的图片和flash资源在"折角推广"模块
+https://s3.17173cdn.com/www.17173.com/10052zjd/mu-1005-250400-2zjd.swf
+https://s2.17173cdn.com/www.17173.com/10052zjd/mu-1005-830120-2zjd.swf
+https://s2.17173cdn.com/www.17173.com/1102sy1zj/pd-1102-250440-sy1zj.jpg
+https://s1.17173cdn.com/www.17173.com/1102sy1zj/pd-1102-850120-sy1zj.jpg
+https://s3.17173cdn.com/www.17173.com/901zj2/jlq-901-250400-2z.jpg
+https://s1.17173cdn.com/www.17173.com/901zj2/jlq-901-830120-2z.jpg
+
+https://s.17173cdn.com/2016/www/if/video/adsame/2016/09/thyj2_160914_zj1/3638.js
+https://s.17173cdn.com/2016/www/if/video/aoqi/201609/14-155/okidea_sc2.js

@@ -9,7 +9,8 @@ var dnsTransformRules = require('./dnsTable');
 function dnsTransform(raw) {
   for(var key in dnsTransformRules){
     var value = dnsTransformRules[key];
-    key = key.replace('http:', 'https:');
+    //var value = dnsTransformRules[key].replace('https:', '');
+    //key = key.replace('http:', '');
     var regKey = new RegExp(key,'gi');
     raw = raw.replace(regKey, value);
     console.log(regKey + '===>' +value);

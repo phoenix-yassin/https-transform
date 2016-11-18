@@ -1,4 +1,4 @@
-module.exports = {
+﻿module.exports = {
 '//i1.17173.itc.cn/':'//images.17173cdn.com/',
 '//i2.17173.itc.cn/':'//images.17173cdn.com/',
 '//i3.17173.itc.cn/':'//images.17173cdn.com/',
