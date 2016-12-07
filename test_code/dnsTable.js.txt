@@ -34,6 +34,10 @@
 '//i1.17173cdn.com/':'//i.17173cdn.com/',
 '//i2.17173cdn.com/':'//i.17173cdn.com/',
 '//i3.17173cdn.com/':'//i.17173cdn.com/',
+'//p.v.17173cdn.com/':'//i.17173cdn.com/',
+'//p1.v.17173cdn.com/':'//i.17173cdn.com/',
+'//p2.v.17173cdn.com/':'//i.17173cdn.com/',
+'//p3.v.17173cdn.com/':'//i.17173cdn.com/',
 
 '//i1.shouyoucdn.com/':'//i.shouyoucdn.com/',
 '//i2.shouyoucdn.com/':'//i.shouyoucdn.com/',
