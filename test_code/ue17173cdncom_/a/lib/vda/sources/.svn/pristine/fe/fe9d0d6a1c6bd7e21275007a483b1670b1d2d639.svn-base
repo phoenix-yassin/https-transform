@@ -1,0 +1,114 @@
+:local(._marginReset) {
+  margin: 0 auto;
+  padding: 0;
+}
+
+:local(._bfc) {
+  overflow: hidden;
+  *zoom: 1;
+}
+
+:local(.container) {
+  line-height: 1.75;
+  background: #f5f5f5;
+  padding: .625em;
+  font-size: 16px;
+}
+
+:local(.topSection) {
+  composes: _bfc;
+}
+
+:local(.topSection img) {
+  width: 100%;
+  height: auto;
+}
+
+:local(.topSectionGameLogo) {
+  width: 30.7%;
+  margin-right: 3%;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 0;
+}
+
+:local(.topSectionGameInfo) {
+  composes: _bfc;
+  display: inline-block;
+  vertical-align: top;
+  width: 63%;
+}
+
+:local(.topSectionGameTitle) {
+  composes: _marginReset;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+:local(.topSectionGameTitle a) {
+  color: #333;
+}
+
+:local(.topSectionGameTitle a:visited, .topSectionGameTitle a:link) {
+  text-decoration: none;
+}
+
+:local(.topSectionGameInfo) p {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #999;
+  font-size: .75em;
+  line-height: 1.5;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+:local(.bottomSection) {
+  composes: _marginReset;
+  composes: _bfc;
+}
+
+:local(.linkActions) {
+  composes: _marginReset;
+  composes: _bfc;
+  padding-top: .625em;
+}
+
+:local(.bottomSection) a {
+  float: left;
+  width: 32.33%;
+  margin-right: 1.5%;
+  line-height: 2;
+  text-align: center;
+  font-size: 1em;
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box;
+  border-radius: 1em;
+}
+
+:local(.container) a:link, :local(.container) a:visited {
+  text-decoration: none;
+}
+
+:local(.buttonGift) {
+  border-color: #ff6d55;
+  color: #ff6d55;
+}
+
+:local(.buttonDownload) {
+  border-color: #63c245;
+  color: #63c245;
+}
+
+:local(.buttonOffical) {
+  border-color: #57adfd;
+  color: #57adfd;
+}

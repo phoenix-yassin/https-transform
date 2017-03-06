@@ -8,14 +8,20 @@
           var me = this;
           this.data = data;
           this.businCss = ' <style type="text/css">\
-          .busin-player-btn{position: absolute;right: 0;top: 167px;display: block;width: 190px;height: 58px;border-bottom:3px solid #c54a00;background:url(http://ue.17173cdn.com/a/lib/vda/sources/adnewgamecodebook/img/btn2.gif) top center no-repeat ;     box-shadow: 1px 1px 3px 1px #333;  color:#fffdea;font:bold 20px/58px "Microsoft Yahei";-webkit-border-radius: 5px;border-radius: 5px;text-align:center;}\
+          .busin-player-btn{position: absolute;right: 0;top: 167px;display: block;width: 190px;height: 58px;border-bottom:3px solid #c54a00;background:url(//
+
+ue.17173cdn.com/a/lib/vda/sources/adnewgamecodebook/img/btn2.gif) top center no-repeat ;     box-shadow: 1px 1px 3px 1px #333;  color:#fffdea;font:bold 20px/58px "Microsoft Yahei";-webkit-border-radius: 5px;border-radius: 5px;text-align:center;}\
           .busin-player-btn:hover{text-decoration: none;}\
           .busin-dialog{position: fixed; display:none; z-index:800;top: 20%;left: 50%;margin-left: -250px;width: 500px;background-color: #fff;border-radius: 10px;font: normal 14px/1.5 "Microsoft Yahei","Simsun";_position:absolute;_border:1px solid #ddd;}\
           .busin-dialog .busin-dialog-close{color:#fff;position: absolute;top: -30px;right: 0;width:1em;height:1em;text-align: center;font:bold 30px/1 "Simsun";text-decoration:none; }\
           .busin-dialog .busin-dialog-logo{position: absolute;left: 50%;top:-56px;margin-left: -85px;width: 170px;height: 130px;overflow: hidden;}\
-          .busin-dialog .busin-dialog-c1{height:135px;background:url(http://ue.17173cdn.com/a/lib/vda/sources/adnewgamecodebook/img/busin-dialog-bg.jpg) no-repeat;border-radius: 10px 10px 0 0;padding-top: 85px; }\
+          .busin-dialog .busin-dialog-c1{height:135px;background:url(//
+
+ue.17173cdn.com/a/lib/vda/sources/adnewgamecodebook/img/busin-dialog-bg.jpg) no-repeat;border-radius: 10px 10px 0 0;padding-top: 85px; }\
           .busin-dialog-c1 .busin-dialog-info{font-size: 16px;color:#ffea00; padding:0 52px; text-align:center}\
-          .busin-dialog-c1 .busin-dialog-tt{background: url(http://ue.17173cdn.com/a/lib/vda/sources/adnewgamecodebook/img/busin-ico.png) no-repeat -30px 3px;padding-left: 20px;display: inline-block;*display: inline;margin:0 15px;}\
+          .busin-dialog-c1 .busin-dialog-tt{background: url(//
+
+ue.17173cdn.com/a/lib/vda/sources/adnewgamecodebook/img/busin-ico.png) no-repeat -30px 3px;padding-left: 20px;display: inline-block;*display: inline;margin:0 15px;}\
           .busin-dialog-c1 .busin-dialog-tit{font:bold 42px/1.5 "Microsoft Yahei";text-align: center;color:#fff;margin-bottom:10px; }\
           .busin-dialog-c2 .busin-dialog-submit{display: block;border: none;background-color: #ff7200;width: 200px;height: 50px;color:#fff;font-size:20px;margin:0 auto;-webkit-border-radius: 5px;border-radius: 5px;}\
           .busin-dialog-c2 .busin-dialog-submit:hover{background-color: #ff8726;}\
@@ -75,7 +81,9 @@
       getMobile: function() {
         var me = this;
         $.ajax({
-          url: 'http://passport.17173.com/site/getMobile?callback=abc',
+          url: '//
+
+passport.17173.com/site/getMobile?callback=abc',
           type: 'GET',
           dataType: 'jsonp',
           jsonpCallback:'abc',
@@ -88,10 +96,10 @@
 
           }
         })
-    
+
 
       },
-       
+
 
       bindEvent: function() {
         var me = this;
@@ -190,10 +198,12 @@
             })
       },
 
- 
+
       sendInfo: function(data) {
           $.ajax({
-            url: 'http://hao.17173.com/api/Schegame?',
+            url: '//
+
+hao.17173.com/api/Schegame?',
             type: 'GET',
             dataType: 'jsonp',
             data: data,
@@ -205,7 +215,7 @@
                     </h3>\
                     <p class="busin-dialog-info">\u6838\u5fc3\u73a9\u5bb6\u7279\u6743\u4fe1\u606f\uff0c\u5c06\u901a\u8fc7\u77ed\u4fe1\u6216\u90ae\u4ef6\u544a\u77e5\uff0c\u656c\u8bf7\u7559\u610f</p>\
                 </div>')
-               
+
               } else {
                 alert(data.message);
                 return false;
@@ -225,13 +235,13 @@
             $('head').append(me.businCss);
             $('body').append( me.dialog)
             $('.'+me.options.advid).show();
-           
+
             me.bindEvent();
-          
+
 
 
           this.emit(adv.ENUM.EVENTS.played)
-           
+
         }
     })
 }(jQuery);

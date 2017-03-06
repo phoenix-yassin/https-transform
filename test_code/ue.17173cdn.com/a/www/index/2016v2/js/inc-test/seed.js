@@ -44,9 +44,11 @@
     bottomCenter: 'bottomCenter',
     bottomRight: 'bottomRight'
   };
-  
+
   advConfigs.urlHash = function(path){
-    var rlt = 'http://';
+    var rlt = '//
+
+';
     var n = 0;
     for (var i = 0; i < path.length; i++) {
       n += path.charCodeAt(i);
@@ -59,7 +61,9 @@
   if (!document.getElementById('scriptadvcore')) {
     script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = 'http://ue.17173cdn.com/a/www/index/2016v2/js/vda.js?v0.8.3';
+    script.src = '//
+
+ue.17173cdn.com/a/www/index/2016v2/js/vda.js?v0.8.3';
     script.id = 'scriptadvcore';
     document.getElementsByTagName('head')[0].appendChild(script);
   }

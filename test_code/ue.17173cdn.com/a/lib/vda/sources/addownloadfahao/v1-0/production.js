@@ -25,7 +25,9 @@ adv.AdBase.extend('AdDownloadFahao', {
     else{
       this.html = adv.$('<div style="margin:20px 0 12px 0;padding-left:22px;"><a target="_blank" style="color:#ff6602;font-weight:bold;font-size:14px;" href="'+this.data.link+'">'+this.data.text+'</a><a  target="_blank" style="margin-left:22px;border-radius:3px;text-align:center;line-height:25px;background:#30b0ec;font-size:14px;display:inline-block;zoom:1;width:80px;height:25px;color:#fff;" href="'+this.data.link+'">'+this.data.btnText+'</a></div>');
 		}
-    this.html[0].style.background='url("http://ue.17173cdn.com/a/lib/vda/sources/addownloadfahao/gift.png") no-repeat 1px 3px';    this.emit(adv.ENUM.EVENTS.setuped);
+    this.html[0].style.background='url("//
+
+ue.17173cdn.com/a/lib/vda/sources/addownloadfahao/gift.png") no-repeat 1px 3px';    this.emit(adv.ENUM.EVENTS.setuped);
   },
   play: function () {
     this.base();

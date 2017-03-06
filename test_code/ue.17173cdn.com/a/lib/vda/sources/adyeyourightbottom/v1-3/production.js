@@ -20,7 +20,11 @@ adv.AdBase.extend('AdYeyouRightBottom', {
     var adConfig = this.options.adConfig;
     this._adOptions = this.options;
 
-    var tmpl = $('<div id="ad-yeyou-nitifiction" style="width:300px;height:200px;padding:22px 2px 2px;position:absolute;right:0;display:block;z-index:10001;border:1px solid #333;background:#111 url(http://ue1.yeyou.itc.cn/images/www/2013/vk-box.jpg) no-repeat;"><a class="close setlink-close" style="position:absolute;display:block;top:1px;right:1px;"><img style="width:20px;height:19px;" src="http://ue1.yeyou.itc.cn/images/www/2013/close.png"/></a></div>');
+    var tmpl = $('<div id="ad-yeyou-nitifiction" style="width:300px;height:200px;padding:22px 2px 2px;position:absolute;right:0;display:block;z-index:10001;border:1px solid #333;background:#111 url(//
+
+ue1.yeyou.itc.cn/images/www/2013/vk-box.jpg) no-repeat;"><a class="close setlink-close" style="position:absolute;display:block;top:1px;right:1px;"><img style="width:20px;height:19px;" src="//
+
+ue1.yeyou.itc.cn/images/www/2013/close.png"/></a></div>');
 
     var _html = '';
     if(~adConfig.src.indexOf('.swf')) {

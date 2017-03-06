@@ -53,13 +53,21 @@
     if($('#classtitle1 a').text() == this.data.gameName || $('.crumbs-box a:eq(4)').text().indexOf(this.data.gameName) != -1 ){
         var gameCode = me.data.gamecode, prizeId = me.data.prizeId;
         if(me.data.prizeId) {
-          var prizeUrl ="http://d1.17173.itc.cn/hao/giftinfo/js/"+prizeId+".js"
+          var prizeUrl ="//
+
+d1.17173.itc.cn/hao/giftinfo/js/"+prizeId+".js"
         } else {
-          var prizeUrl = "http://d1.17173.itc.cn/hao/giftlist/js/"+gameCode+".js"; 
+          var prizeUrl = "//
+
+d1.17173.itc.cn/hao/giftlist/js/"+gameCode+".js";
         }
 
-        var downloadUrl = 'http://d1.17173.itc.cn/download/game/js/'+gameCode+'.js';
-        var gwUrl = 'http://d1.17173.itc.cn/newgame/info/js/'+gameCode+'.js';
+        var downloadUrl = '//
+
+d1.17173.itc.cn/download/game/js/'+gameCode+'.js';
+        var gwUrl = '//
+
+d1.17173.itc.cn/newgame/info/js/'+gameCode+'.js';
         me.html= '<div class="AdBkGamePayTopRecommend"><div id="gb_hao1" class="gb-hao1">';
         $.getScript(prizeUrl, function() {
           if(me.data.prizeId) {
@@ -200,7 +208,7 @@
           this.emit(adv.ENUM.EVENTS.played);
 
         }
-   
+
     }
 
     }

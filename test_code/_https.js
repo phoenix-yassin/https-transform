@@ -1,4 +1,4 @@
-var http = require('http'),
+﻿var http = require('http'),
     httpProxy = require('http-proxy');
     fs = require('fs');
 
@@ -73,4 +73,4 @@ server.on('connect', function (req, socket) {
 
 // Test with:
 // curl -vv -x http://127.0.0.1:10080 https://www.google.com
-// curl -vv -x http://127.0.0.1:10080 http://www.google.com*/
+// curl -vv -x http://127.0.0.1:10080 http://www.google.com**/

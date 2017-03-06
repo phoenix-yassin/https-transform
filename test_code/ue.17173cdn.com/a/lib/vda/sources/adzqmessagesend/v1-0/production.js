@@ -22,7 +22,7 @@ adv.AdBase.extend("AdZqMessageSend", {
 		this.html = [];
 		var self = this;
 		var data = this.options;
-			self.html.push('<div class="zq-fix1" id="AdZqMessageSend">',	
+			self.html.push('<div class="zq-fix1" id="AdZqMessageSend">',
 			'<a href="javascript:;" class="ico ico-close"></a>',
 			'<div class="zq-fix1-c1">',
 				'<div class="zq-fix1-item zq-fix1-item-show">',
@@ -74,7 +74,7 @@ adv.AdBase.extend("AdZqMessageSend", {
 			'</div>',
 			'<div class="zq-fix1-c2"><i class="ico ico-phone"></i>',data.hswTitle,'</div>',
 		'</div>') ;
-		
+
 		this.position;
 		if(this.options.position == 'right') {
 			this.position = 'left';
@@ -84,7 +84,9 @@ adv.AdBase.extend("AdZqMessageSend", {
 		this.css ='<style type="text/css">'+
 		'.ad-zhanneituiguang{display:none!important}'+
 		'.zq-fix1 .mask { overflow: hidden; position: absolute; z-index: -1; top: 0; left: 0; width: 100%; height: 100%; *height: 200px; background: #000; filter: alpha(opacity=50); opacity: .5; }'+
-		'.zq-fix1 .ico{display: inline-block;*display:inline;*zoom:1;background:url(http://ue.17173cdn.com/a/9yin/index/2015/img/zq-ico.png) no-repeat; vertical-align: middle;}'+
+		'.zq-fix1 .ico{display: inline-block;*display:inline;*zoom:1;background:url(//
+
+ue.17173cdn.com/a/9yin/index/2015/img/zq-ico.png) no-repeat; vertical-align: middle;}'+
 		'.zq-fix1 .ico-close{position:absolute;z-index:10;top:-10px;left:-10px;width:25px;height: 25px;background-position:0 0;background: url(img/zq-img.png) no-repeat;}'+
 		'.zq-fix1 .ico-pc{width:17px;height: 19px;background-position:0 -25px; margin:4px 5px 7px 0}'+
 		'.zq-fix1 .ico-phone{width: 18px;height: 19px;background-position:2px 0;margin:4px 2px 7px 0;}'+
@@ -94,7 +96,9 @@ adv.AdBase.extend("AdZqMessageSend", {
 		'.zq-fix1-c1 .zq-fix1-bd{padding:10px;background-color:#f3f3f3;}'+
 		'.zq-fix1-c1 .ico2-phone{margin:5px 8px 5px 0;}'+
 		'.zq-fix1-c2 .ico2-phone{margin-bottom:5px;}'+
-		'.zq-fix1-c2{display:none;width:16px;padding: 5px 7px 30px;background: #49b3e9 url(http://ue1.17173cdn.com/a/9yin/index/2015/img/zq-img.png) no-repeat -30px bottom;color: #fff; line-height: 1.3; font-family:"Microsoft YaHei";cursor: pointer;position: absolute;'+this.position +': 0; top: 0;}'+
+		'.zq-fix1-c2{display:none;width:16px;padding: 5px 7px 30px;background: #49b3e9 url(//
+
+ue1.17173cdn.com/a/9yin/index/2015/img/zq-img.png) no-repeat -30px bottom;color: #fff; line-height: 1.3; font-family:"Microsoft YaHei";cursor: pointer;position: absolute;'+this.position +': 0; top: 0;}'+
 		'.zq-fix1-c1-c1{overflow: hidden;*zoom:1;}'+
 		'.zq-fix1-c1-c1 .btn-box{overflow:hidden;*zoom:1;}'+
 		'.zq-fix1-c1-c1 .btn-box a{float: left;height: 28px;width: 73px;display:block;line-height: 28px;background: #fff; color: #28a7e7;font-size: 14px;font-weight: bold;text-align: center;border:1px solid #dadada;}'+
@@ -130,8 +134,12 @@ adv.AdBase.extend("AdZqMessageSend", {
 		'.enter-box .btn-get{float: left;width:35px; cursor:pointer; height: 32px;  background:#ff6d55; color:#fff600; font-size: 18px; text-align: center; line-height: 30px; *line-height: 32px; border-top-right-radius:5px; border-bottom-right-radius: 5px; }'+
 		'.enter-box .btn-get:hover{background:#f3543a}'+
 		'.enter-box .form-result{color: #454545; height:22px; line-height: 22px; color:#f43131; font-size: 12px; display:none}'+
-		'.enter-box .ico-right{background: url(http://ue.17173cdn.com/a/9yin/index/2015/img/ico3.png) no-repeat 0 0; width:16px; height: 13px; margin: 0 5px 3px 0}'+
-		'.enter-box .ico-wrong{background: url(http://ue.17173cdn.com/a/9yin/index/2015/img/ico3.png) no-repeat 0 -30px; width:10px; height: 10px; margin: 0 5px 3px 0}'+
+		'.enter-box .ico-right{background: url(//
+
+ue.17173cdn.com/a/9yin/index/2015/img/ico3.png) no-repeat 0 0; width:16px; height: 13px; margin: 0 5px 3px 0}'+
+		'.enter-box .ico-wrong{background: url(//
+
+ue.17173cdn.com/a/9yin/index/2015/img/ico3.png) no-repeat 0 -30px; width:10px; height: 10px; margin: 0 5px 3px 0}'+
 		/*皮肤调整*/
 		'.zq-fix1-c1 .zq-fix1-hd{background: #4778b8;}'+
 		'.zq-fix1-c1 .zq-fix1-bd{background-color:#e2e2e2;}'+
@@ -141,9 +149,13 @@ adv.AdBase.extend("AdZqMessageSend", {
 		'.zq-fix1-bd .btn-jrzq{background:#d1a23e;color: #fff;}'+
 		'.zq-fix1-bd .btn-jrzq:hover{background:#ca982f;}'+
 		/*缩小框背景色*/
-		'.zq-fix1-c2{background: #49b3e9 url(http://ue1.17173cdn.com/a/9yin/index/2015/img/zq-img.png) no-repeat -30px bottom;}'+
+		'.zq-fix1-c2{background: #49b3e9 url(//
+
+ue1.17173cdn.com/a/9yin/index/2015/img/zq-img.png) no-repeat -30px bottom;}'+
 		/*关闭按钮*/
-		'.zq-fix1 .ico-close{background:url(http://ue1.17173cdn.com/a/9yin/index/2015/img/zq-img.png) no-repeat 0 0;}'+
+		'.zq-fix1 .ico-close{background:url(//
+
+ue1.17173cdn.com/a/9yin/index/2015/img/zq-img.png) no-repeat 0 0;}'+
 		':root .mask { filter: none \0; }'+
 		'</style>';
 		$('head').append(this.css);
@@ -163,7 +175,7 @@ adv.AdBase.extend("AdZqMessageSend", {
 				$tit.click(function(){
 					$this.addClass('zq-fix1-item-show').siblings().removeClass('zq-fix1-item-show');
 				})
-			
+
 			});
 			$('body').delegate('.zq-fix1 .ico-close', 'click', function(event) {
 				$('.zq-fix1 .zq-fix1-c2').fadeIn();
@@ -176,13 +188,13 @@ adv.AdBase.extend("AdZqMessageSend", {
 				$('.zq-fix1 .zq-fix1-c1').fadeIn();
 				$('.zq-fix1 .zq-fix1-c2').fadeOut();
 			});
-			
 
 
-		
+
+
 
 			$('input[name=mobile]').focus(function(){
-				$(document).keydown(function(event){ 
+				$(document).keydown(function(event){
 					if(event.keyCode==13){//13 回车键
 						var mobile = $('input[name=mobile]').val();
 					    sendMesage(mobile) ;
@@ -191,7 +203,9 @@ adv.AdBase.extend("AdZqMessageSend", {
 			})
 			function sendMesage(mobile) {
 				$.ajax({
-					url: 'http://act.17173.com/2014/04/sms0408/index.php?do=SendMsg&callback=?',
+					url: '//
+
+act.17173.com/2014/04/sms0408/index.php?do=SendMsg&callback=?',
 					type: 'GET',
 					dataType: 'jsonp',
 					data: {mobile: mobile, id: self.options.sendid},
@@ -212,11 +226,11 @@ adv.AdBase.extend("AdZqMessageSend", {
 				var mobile = $('input[name=mobile]').val();
 				sendMesage(mobile) ;
 				return false;
-					
+
 			});
 			self.positionFixed(document.getElementById("AdZqMessageSend"), 260);
 
-		
+
 		this.emit(adv.ENUM.EVENTS.played)
 	},
 	stop: function() {

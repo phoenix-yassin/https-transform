@@ -1,0 +1,5 @@
+<script type="text/javascript">
+    new ggLinkTip("hotGame", [
+    { gameUrl: "http://qn.17173.com/", width: 120, content: "新职业画魂 今日公测", goUrl: "http://qn.17173.com/", parentStyle: "c-tx5", tipStyle: "tip-game-list" }
+    ]).execute();
+</script>

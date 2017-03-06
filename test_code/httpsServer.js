@@ -59,8 +59,8 @@ https.createServer(options, function(request, response) {
                   } else {}*/
                       response.writeHead(200, "Ok");
                       /** replcer start  **/
-                      raw = raw.replace(/http:\/\//gi,'\/\/');
-                      raw = raw.replace(/http%3a%2f%2f/gi,'\/\/');
+                      //raw = raw.replace(/http:\/\//gi,'\/\/');
+                      //raw = raw.replace(/http%3a%2f%2f/gi,'\/\/');
                       //annotate dns transformer
                       raw = dnsTransform(raw);
                       /** replcer end  **/
